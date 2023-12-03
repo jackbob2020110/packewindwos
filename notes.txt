@@ -1,0 +1,5 @@
+        /*
+        "./scripts/vm-guest-tools.bat",
+        "./scripts/chocolatey.bat",
+        "./scripts/chocopacks.bat"
+        */

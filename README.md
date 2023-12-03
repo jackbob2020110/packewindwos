@@ -21,8 +21,33 @@
     a.构建Windows 2012 R2
     packer build --only=hyperv-iso `
         --var disk_size=102400 `
-        --var iso_url=f:\\iso\\win2012r2.iso `
+        --var iso_url=d:\\iso\\win2012r2.iso `
         --var iso_checksum=f18f500fe9f9f08b4857747a6770a6e4 `
         --var autounattend=./answer_files/2012_r2/Autounattend.xml `
-        --var hyperv_switchname=Public `
+        --var hyperv_switchname=nat-switch `
         test_windows_2012_r2.json
+    
+    packer build --only=hyperv-iso `
+        --var disk_size=204800 `
+        --var iso_url=d:\\iso\\win2012r2.iso `
+        --var iso_checksum=f18f500fe9f9f08b4857747a6770a6e4 `
+        --var autounattend=./answer_files/2012_r2/Autounattend.xml `
+        --var hyperv_switchname=nat-switch `
+        ws2012.json
+
+
+    packer build --only=hyperv-iso `
+        --var disk_size=204800 `
+        --var iso_url=d:\\iso\\en_win2019.iso `
+        --var iso_checksum=f18f500fe9f9f08b4857747a6770a6e4 `
+        --var autounattend=./answer_files/2019/Autounattend.xml `
+        --var hyperv_switchname=nat-switch `
+        ws2019.json
+
+        packer build --only=hyperv-iso `
+        --var disk_size=204800 `
+        --var iso_url=d:\\iso\\win2012r2.iso `
+        --var iso_checksum=f18f500fe9f9f08b4857747a6770a6e4 `
+        --var autounattend=./answer_files/2012_r2/auto2.xml `
+        --var hyperv_switchname=nat-switch `
+        ws2012r2.json
