@@ -1,0 +1,67 @@
+{
+  "builders": [
+    {
+      "boot_wait": "0m",
+      "communicator": "winrm",
+      "cpus": 2,
+      "disk_size": "{{user `disk_size`}}",
+      "enable_secure_boot": true,
+      "enable_virtualization_extensions": true,
+      "floppy_files": [
+        "{{user `autounattend`}}",
+        "./scripts/disable-screensaver.ps1",
+        "./scripts/enable-winrm.ps1",
+        "./scripts/unattend.xml",
+        "./scripts/sysprep.bat"
+      ],
+      "guest_additions_mode": "disable",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "memory": "{{user `memory`}}",
+      "shutdown_command": "a:/sysprep.bat",
+      "switch_name": "{{user `hyperv_switchname`}}",
+      "type": "hyperv-iso",
+      "vm_name": "windows_2019",
+      "winrm_password": "vagrant",
+      "winrm_timeout": "{{user `winrm_timeout`}}",
+      "winrm_username": "vagrant"
+    }
+   ],
+  "post-processors": [
+    {
+      "keep_input_artifact": false,
+      "output": "windows_2019_{{.Provider}}.box",
+      "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "scripts": [
+        "./scripts/Windows/init_server.ps1",
+        "./scripts/set-powerplan.ps1",
+        "./scripts/windows/disable_windows_background_services.ps1",
+        "./scripts/windows/clean_windows.ps1"
+        ],
+      "type": "powershell"
+    },
+    {
+      "scripts": [
+        "./scripts/enable-rdp.bat",
+        "./scripts/compact.bat"
+      ],
+      "type": "windows-shell"
+    }
+  ],
+  "variables": {
+    "autounattend": "./answer_files/2019/Autounattend.xml",
+    "disk_size": "204800",
+    "disk_type_id": "1",
+    "memory": "2048",
+    "headless": "true",
+    "hyperv_switchname": "{{env `hyperv_switchname`}}",
+    "iso_checksum": "a876d230944abe3bf2b5c2b40da6c4a3",
+    "iso_url": "d:\\iso\\en_win2019.iso",
+    "winrm_timeout": "6h"
+  }
+}
+

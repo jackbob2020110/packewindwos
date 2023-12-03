@@ -1,6 +1,6 @@
 *.box
 
-/ws*
+/ws*/
 
 /*cache*
 /*output*
