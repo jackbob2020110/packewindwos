@@ -4,6 +4,12 @@ Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" 
 
 (Get-WmiObject -class "Win32_TSGeneralSetting" -Namespace root\cimv2\terminalservices -ComputerName $env:COMPUTERNAME -Filter "TerminalName='RDP-tcp'").SetUserAuthenticationRequired(0)
 
+Write-Host "Enable PS Remoting"
+Enable-PSRemoting -Force
+Get-Service WinRM
+
+
+
 
 # Disable UAC
 Write-Host "Disabling UAC..."

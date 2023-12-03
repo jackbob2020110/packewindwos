@@ -97,22 +97,18 @@
   "provisioners": [
     {
       "scripts": [
-        "./scripts/set-winrm-automatic.bat"
+        "./scripts/disable-screensaver.ps1",
+        "./scripts/set-powerplan.ps1",
+        "./scripts/win2016/disable-antivirus.ps1",
+        "./scripts/windows/disable_windows_background_services.ps1",
+        "./scripts/windows/clean_windows.ps1"
 
       ],
-      "type": "windows-shell"
-    },
-    {
-      "scripts": [
-        "./scripts/disable-screensaver.ps1",
-        "./scripts/set-powerplan.ps1"
-        ],
       "type": "powershell"
     },
     {
       "scripts": [
-        "./scripts/postInstall.ps1",
-        "./scripts/win2016/disable-antivirus.ps1"
+        "./scripts/postInstall.ps1"
       ],
       "type": "powershell"
     }

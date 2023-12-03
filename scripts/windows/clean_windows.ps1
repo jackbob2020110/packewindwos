@@ -55,8 +55,6 @@ Write-Host "Clearing Event Logs..."
 Clear-EventLog -LogName Application
 Clear-EventLog -LogName Security
 Clear-EventLog -LogName System
-Clear-EventLog -LogName AppVeyor
-
 # Cleanup NuGet cache
 # Write-Host "Deleting NuGet cache..."
 # if (Test-Path "$env:USERPROFILE\.nuget\packages") {

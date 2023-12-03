@@ -97,35 +97,19 @@
   "provisioners": [
     {
       "scripts": [
-        "./scripts/set-winrm-automatic.bat"
-
-      ],
-      "type": "windows-shell"
-    },
-    {
-      "scripts": [
         "./scripts/disable-screensaver.ps1",
         "./scripts/set-powerplan.ps1",
         "./scripts/win2016/disable-antivirus.ps1",
-        "./scripts/windows/disable_windows_background_services.ps1",
-        "./scripts/windows/clean_windows.ps1"
+        "./scripts/windows/disable_windows_background_services.ps1"
         ],
       "type": "powershell"
     },
     {
       "scripts": [
         "./scripts/postInstall.ps1"
-        
       ],
       "type": "powershell"
-    },
-    {
-      "scripts": [
-        "./scripts/compact.bat"
-      ],
-      "type": "windows-shell"
     }
-
   ],
   "variables": {
     "autounattend": "./answer_files/2019/Autounattend.xml",
